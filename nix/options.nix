@@ -10,6 +10,7 @@
     mkPackageOption
     types
     ;
+  settingsFormat = pkgs.formats.yaml { };
 in {
   options.services.headplane = {
     enable = mkEnableOption "headplane";
@@ -27,6 +28,7 @@ in {
         See: https://github.com/tale/headplane/blob/main/config.example.yaml
       '';
       type = types.submodule {
+        freeformType = settingsFormat.type;
         options = {
           server = mkOption {
             type = types.submodule {
